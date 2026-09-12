@@ -10,8 +10,6 @@ This project documents the setup of a Kali Linux security-testing environment ba
 
 The lab uses a private **10.0.0.0/24** virtual network, with Kali configured at **10.0.0.2/24** and Internet connectivity verified through the VMware NAT gateway.
 
-> **Implementation note:** The NetworkWalks task specifies VirtualBox. This implementation uses VMware Workstation because the Kali VM was already available in the existing VMware environment. The required network, connectivity, shared-folder, and snapshot objectives were configured and verified accordingly.
-
 ## Lab Configuration
 
 | Component | Configuration |
@@ -85,7 +83,7 @@ Gateway:      10.0.0.1
 DNS:          8.8.8.8
 ```
 
-Connectivity was verified from Kali:
+Connectivity was verified from Kali using:
 
 ```bash
 ip -4 addr show eth0
@@ -93,7 +91,7 @@ ip route | grep default
 ping -c 3 8.8.8.8
 ```
 
-Result: **3/3 packets received with 0% packet loss.**
+**Result:** 3/3 packets received with **0% packet loss**.
 
 ![Kali IP and Connectivity](screenshots/02-kali-ip-connectivity.png)
 
@@ -108,17 +106,12 @@ VMware Guest Isolation was configured with:
 
 ### 4. Configure Shared Downloads Folder
 
-The Windows Downloads directory was shared with the Kali VM.
+The Windows **Downloads** directory was shared with the Kali VM.
 
 ```text
-Windows:
-C:\Users\Admin\Downloads
-
-VMware share:
-Downloads
-
-Kali:
-/downloads
+Host:          Windows Downloads
+VMware Share:  Downloads
+Kali Path:     /downloads
 ```
 
 The Kali path was linked to the VMware shared-folder mount:
@@ -156,15 +149,14 @@ This provides a known-good recovery point before future cybersecurity experiment
 | Shared Downloads | Configured |
 | Clean snapshot | Created |
 
-## Key Takeaways
-
-This setup provided practical experience with:
+## Skills Demonstrated
 
 - Virtual machine networking
-- NAT networking
+- NAT network configuration
 - IPv4 addressing and subnetting
 - Static IP configuration in Kali Linux
-- Default gateways and DNS
+- Default gateway and DNS configuration
+- Network connectivity troubleshooting
 - Host-to-guest file sharing
 - VM snapshots and recovery
 - Building a controlled environment for authorized security testing
@@ -190,5 +182,6 @@ NETWORKWALKS-WK1-PM1/
 
 ## Program
 
-**NetworkWalks Cybersecurity Internship**  
+**NetworkWalks Cybersecurity Internship**
+
 **Week 1 — Project Module 1: Cybersecurity Lab Setup**
